@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: electrolite-user-app
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: electrolite-user-image
+  template:
+    metadata:
+      labels:
+        app: electrolite-user-image
+    spec:
+      containers:
+        - name: electrolite-user
+          image: 683563489644.dkr.ecr.ap-south-1.amazonaws.com/electrolite-user-image:latest
+          ports:
+            - containerPort: 9000
